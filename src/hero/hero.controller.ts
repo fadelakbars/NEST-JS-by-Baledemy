@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
 import { request, response } from 'express';
 
 let person = [
@@ -12,6 +12,11 @@ export class HeroController {
   @Get('index')
   index(@Res() response) {
     response.json(person);
+  }
+
+  @Get('detail/:id')
+  detail(@Param() params) {
+    return `Hero dengan id ${params.id}`
   }
 
   @Post('create')
