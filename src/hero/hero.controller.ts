@@ -1,4 +1,4 @@
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get, Req, Res } from '@nestjs/common';
 import { request } from 'express';
 
 @Controller('hero')
@@ -20,5 +20,10 @@ export class HeroController {
   @Get('expressresponse')
   expressResponse(@Req() request: Request): string {
     return 'Ini express response';
+  }
+
+  @Get('expressrequest')
+  expressRequest(@Res() response) {
+    return response.send('Ini express request');
   }
 }
