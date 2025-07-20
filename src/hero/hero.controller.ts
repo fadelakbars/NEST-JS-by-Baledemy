@@ -1,5 +1,5 @@
-import { Controller, Get, Req, Res } from '@nestjs/common';
-import { request } from 'express';
+import { Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { request, response } from 'express';
 
 @Controller('hero')
 export class HeroController {
@@ -32,5 +32,13 @@ export class HeroController {
   passthrough(@Req() request: Request, @Res() response) {
     response.send('Ini express response');
     return 'Ini NestJS response';
+  }
+
+  //request object
+  @Post('requestbody')
+  requestBody(@Req() request, @Res({ passthrough: true }) response) {
+    return {
+      body : request.body,
+    }
   }
 }
