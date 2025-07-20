@@ -26,4 +26,11 @@ export class HeroController {
   expressRequest(@Res() response) {
     return response.send('Ini express request');
   }
+
+  // passthrough digunakan jika kita ingin mengembalikan response dari express sambil tetap mengembalikan response dari NestJS
+  @Get('passthrough')
+  passthrough(@Req() request: Request, @Res() response) {
+    response.send('Ini express response');
+    return 'Ini NestJS response';
+  }
 }
