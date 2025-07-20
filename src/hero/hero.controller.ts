@@ -7,8 +7,11 @@ export class HeroController {
     return 'Ini hero';
   }
 
-  @Get('detail')
-  detail() {
-    return 'ini detail hero';
+  // return object
+  @Get('object')
+  object() {
+    return {
+      nama: 'Fadhel',
+    };
   }
 }
